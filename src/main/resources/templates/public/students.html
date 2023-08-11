@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+<style>
+    img#banner-img {
+        width: 100%;
+        height: 226px;
+    }
+    div#home-text-sections {
+        display: flex;
+        gap: 1em;
+        margin: 1em 0 1em 0;
+    }
+    div#home-text-sections section {
+        border: 2px solid #ababab;
+        padding: 0.6em;
+    }
+</style>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+    <div class="container">
+    <h1>Student List</h1>
+    <div class="float-end">
+        <form th:action="@{/eregistrar/search}" method="get" class="form-group">
+            <div>
+                <label for="searchString">Search: </label>
+                <input type="text" placeholder="Search String" name="searchString" th:value="${searchString}">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>#</th>
+                <th>Student ID:</th>
+                <th>Student Number:</th>
+                <th>First Name:</th>
+                <th>Middle Name:</th>
+                <th>Last Name:</th>
+                <th>Date of Enrollment:</th>
+                <th>Cumulative GPA:</th>
+                <th>International Student:</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr th:each="student,counter : ${students}">
+                    <td th:text="${counter.count}"></td>
+                    <td th:text="${student.studentId}"></td>
+                    <td th:text="${student.studentNumber}"></td>
+                    <td th:text="${student.firstName}"></td>
+                    <td th:text="${student.middleName}"></td>
+                    <td th:text="${student.lastName}"></td>
+                    <td th:text="${#dates.format(student.enrollmentDate, 'yyyy-MM-dd')}"></td>
+                    <td th:text="${student.cgpa}"></td>
+                    <td><input title="International Student" type="checkbox" th:checked="${student.internationalStudent}" disabled></td>
+                    <td>
+                        <form th:action="@{/eregistrar/edit/{studentId}(studentId=${student.studentId})}" method="get">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{/eregistrar/delete/{studentId}(studentId=${student.studentId})}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+</html>

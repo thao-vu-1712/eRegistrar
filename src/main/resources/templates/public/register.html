@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+<style>
+    img#banner-img {
+        width: 100%;
+        height: 226px;
+    }
+    div#home-text-sections {
+        display: flex;
+        gap: 1em;
+        margin: 1em 0 1em 0;
+    }
+    div#home-text-sections section {
+        border: 2px solid #ababab;
+        padding: 0.6em;
+    }
+</style>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+    <div class="container">
+    <h1>Register</h1>
+        <form th:action="@{/eregistrar/register}" th:object="${student}" method="post">
+            <label for="studentNumber">Student Number:</label>
+            <input type="text" th:field="*{studentNumber}" />
+            <br />
+
+            <label for="firstName">First Name:</label>
+            <input type="text" th:field="*{firstName}" />
+            <br />
+
+            <label for="middleName">Middle Name:</label>
+            <input type="text" th:field="*{middleName}" />
+            <br />
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" th:field="*{lastName}" />
+            <br />
+
+            <label for="cgpa">CGPA:</label>
+            <input type="text" th:field="*{cgpa}" />
+            <br />
+
+            <label for="enrollmentDate">Enrollment Date:</label>
+            <input type="date" th:field="*{enrollmentDate}" />
+            <br />
+
+            <label for="internationalStudent">International Student:</label>
+            <input type="checkbox" th:field="*{internationalStudent}" />
+            <br />
+
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+</body>
+</html>

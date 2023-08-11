@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+<title>Student - Edit</title>
+
+<style>
+    img#banner-img {
+        width: 100%;
+        height: 226px;
+    }
+    div#home-text-sections {
+        display: flex;
+        gap: 1em;
+        margin: 1em 0 1em 0;
+    }
+    div#home-text-sections section {
+        border: 2px solid #ababab;
+        padding: 0.6em;
+    }
+</style>
+<body>
+<div id="page-content">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <h1>Edit Student</h1>
+    <form th:action="@{/eregistrar/edit/{studentId}(studentId=${student.studentId})}" method="post" th:object="${student}">
+        <input readonly="readonly" th:field="*{studentId}" />
+
+        <label for="studentNumber">Student Number:</label>
+        <input type="text" th:field="*{studentNumber}" />
+        <br />
+
+        <label for="firstName">First Name:</label>
+        <input type="text" th:field="*{firstName}" />
+        <br />
+        <label for="middleName">Middle Name:</label>
+        <input type="text" th:field="*{middleName}" />
+        <br />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" th:field="*{lastName}" />
+        <br />
+
+        <label for="cgpa">GPA:</label>
+        <input type="text" th:field="*{cgpa}" />
+        <br />
+
+        <label for="enrollmentDate">Enrollment Date:</label>
+        <input type="date" th:field="*{enrollmentDate}" th:value="${#dates.format(student.enrollmentDate, 'yyyy-MM-dd')}"/>
+        <br />
+
+        <label for="internationalStudent">is International:</label>
+        <input type="checkbox" th:field="*{internationalStudent}" />
+        <br />
+
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+    </div>
+</body>
+</html>

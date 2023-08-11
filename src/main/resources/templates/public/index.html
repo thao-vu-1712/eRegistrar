@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/head-elements :: headElements}"></head>
+<title>Studnet - Home</title>
+
+<style>
+    img#banner-img {
+        width: 100%;
+        height: 226px;
+    }
+    div#home-text-sections {
+        display: flex;
+        gap: 1em;
+        margin: 1em 0 1em 0;
+    }
+    div#home-text-sections section {
+        border: 2px solid #ababab;
+        padding: 0.6em;
+    }
+</style>
+<body>
+<div id="page-content">
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main>
+        <h2>Welcome to the Student Registration System</h2>
+        <hr>
+    </main>
+</div>
+</body>
+</html>

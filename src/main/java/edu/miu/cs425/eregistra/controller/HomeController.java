@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-    @GetMapping(value = {"/"})
+    @GetMapping(value = {"/","eregistrar/home"})
     public String displayHomepage() {
-        return "home/index";
+        return "public/index";
+    }
+
+    @GetMapping(value = {"eregistrar/about"})
+    public String displayAbout() {
+        return "public/about";
     }
 }
