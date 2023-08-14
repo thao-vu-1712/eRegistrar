@@ -14,4 +14,9 @@ public class HomeController {
     public String displayAbout() {
         return "public/about";
     }
+
+    @GetMapping(value = {"eregistrar/login"})
+    public String displayLogin() {
+        return "login";
+    }
 }
